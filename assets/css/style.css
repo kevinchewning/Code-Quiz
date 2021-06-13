@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.playArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 75px;
+    padding: 5%;
+}
+
+#welcomeScreen {
+    text-align: center;
+}
+
+#introTitle {
+    margin-bottom: 5px;
+}
+
+#rules{
+    margin-bottom: 5px;
+}
+
+#beginButton{
+    margin: 5px;
+    transform: scale(2);
+    background-color: blue;
+    color: white;
+    opacity: 0.6;
+}
+
+#beginButton:hover {
+    opacity: 1;
+}
+
+#quiz {
+    display: none;
+}
+
+#highscores {
+    display: none;
+}
+
+#HSButton {
+    position: absolute;
+    top: 5px;
+    text-align: center;
+    width: 100%;
+}

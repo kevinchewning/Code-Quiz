@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Code Quiz!</title>
+        <link rel="stylesheet" href="./assets/css/style.css"/>
+    </head>
+
+    <body>
+
+        <!--Welcome Screen-->
+        <div class="playArea" id="welcomeScreen">
+            <h1 id="introTitle">Coding Quiz Challenge!</h1>
+            <p id="rules">Welcome to the javascript coding quiz challenge! Click 'Begin' to answer
+                a series of multiple choice questions about the fundamentals of javascript. But be
+                quick! Try and answer all of the questions before the timer runs out! Wrong answers
+                will result in lost time so be careful! Are you ready?!
+            </p>
+            <button type="button" id="beginButton">Begin!</button>
+        </div>
+
+        <!--Quiz Area-->
+        <div class="playArea" id="quiz">
+            <h1 id="question"></h1>
+            <ol id="answers">
+                <li id="answer1"></li>
+                <li id="answer2"></li>
+                <li id="answer3"></li>
+                <li id="answer4"></li>
+            </ol>
+            <div id="timer"><span id="timeLeft"></span></div>
+        </div>
+
+        <!--Highscores Area-->
+        <div class="playArea" id="highscores">
+            <h1>Highscores</h1>
+            <ol id="highscores"></ol>
+        </div>
+
+        <!--View Highscores Button-->
+        <div id="HSButton">
+            <h3>View Highscores</h3>
+            <p id="HSMessage">Current highscore is <span id="topPlayer"></span> with <span id ="topScore"></span> points!</p>
+        </div>
+
+        <script src="./assets/scripts/script.js"></script>
+    </body>
+
+</html>
