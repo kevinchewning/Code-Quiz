@@ -94,6 +94,14 @@ body{
     font-size: 2rem;
 }
 
+#results {
+    display: none;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #highscoresEl {
     display: none;
 }

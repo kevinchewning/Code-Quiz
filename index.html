@@ -33,7 +33,16 @@
             <div id="timer"><span id="timeLeft">60</span></div>
         </div>
 
-        <!--NEED TO ADD RESULTS AREA-->
+        <!--Results Area-->
+        <div class="playArea" id="results">
+            <h1 id="youScored">You scored <span id="playerScore"></span> points!</h1>
+            <form id="highScoreForm">
+                <h2>Congrats! You made the highscores!</h2>
+                <label for="highScoreInput">Enter your name:</label><br>
+                <input type="text" id="highScoreInput" name="highScoreInput">
+            </form>
+            <button type="button" id="playAgain">Play again?</button>
+        </div>
 
         <!--Highscores Area-->
         <div class="playArea" id="highscoresEl">

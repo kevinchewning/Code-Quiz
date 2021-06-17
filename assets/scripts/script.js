@@ -17,6 +17,9 @@ var hsButton = document.getElementById("HSButton");
 var hsMessage = document.getElementById("HSMessage");
 var topPlayer = document.getElementById("topPlayer");
 var topScore = document.getElementById("topScore");
+var results = document.getElementById("results");
+var score = document.getElementById("playerScore");
+var playAgainButton = document.getElementById("playAgain");
 
 //quiz variables
 const quizQuestions = [
@@ -26,7 +29,7 @@ const quizQuestions = [
             a: "<!-- -->",
             b: "//",
             c: "/* */",
-            d: "// AND /* */"
+            d: "// and /* */"
         },
         correctAnswer: "d"
     },
@@ -99,30 +102,33 @@ const quizQuestions = [
     
 ]
 
-var playerScore = 0;
+var playerScore;
+var questionNumber;
+var timeleft;
+var points;
 
 //quiz functions
 beginButton.addEventListener("click", function () {buildQuiz()});
+playAgainButton.addEventListener("click", function() {buildQuiz()});
 
+//Render quiz
+
+// !!buildQuiz appears to be running multiple times concurrently when doing repeated play throughs. Must find solution.
 function buildQuiz() {
-    var questionNumber = -1
-    var timeleft = 60
+    questionNumber = -1;
+    timeleft = 60;
+    points = 1000;
+    playerScore = 0;
 
     welcomeScreen.style.display = "none";
+    results.style.display = "none";
     quizScreen.style.display = "flex";
 
-    timeLeft.textContent = timeLeft;
+    timeLeft.textContent = timeleft;
 
-    setInterval(
-        function setTime() {
-            if (timeleft > 0) {
-                timeleft--;
-                timeLeft.textContent = timeleft;
-            } else {
-                showResults();
-            }
-        },
-    1000)
+    var setTimeInterval = setInterval(setTime, 1000);
+
+    var scoreTimerInterval = setInterval(scoreTimer, 10);
 
     nextQuestion();
 
@@ -131,6 +137,24 @@ function buildQuiz() {
     answer3.addEventListener("click", function () {answerChecker("c")});
     answer4.addEventListener("click", function () {answerChecker("d")});
 
+    //10 second timer to award points based on how quickly you answer.
+    function scoreTimer () {
+        if (points > 0) {
+            points -= 1;
+        };
+    };
+
+    //60 second timer to complete entire quiz.
+    function setTime() {
+        if (timeleft > 0) {
+            timeleft--;
+            timeLeft.textContent = timeleft;
+        } else {
+            showResults();
+        };
+    };
+    
+    //Renders next question/answers if any available or ends quiz
     function nextQuestion () {
         questionNumber++;
 
@@ -142,24 +166,35 @@ function buildQuiz() {
             answer4.textContent = quizQuestions[questionNumber].answers.d;
         } else {
             showResults();
-        }
-    }
+        };
+    };
 
+    //Checks correct answer against variable given with click. Deducts 5 seconds for incorrect answers
     function answerChecker (x) {
+        console.log(questionNumber);
         
         if (x == quizQuestions[questionNumber].correctAnswer) {
-            playerScore += 1000;
+            playerScore += points;
+            points = 1000
             nextQuestion();
         } else {
             timeleft -= 5;
-            //Need to decide if I want incorrect answers to move to next question or force player to lose time until correct
-        }
-    }
+        };
+    };
+
+    //Renders results and prompts for highscore input if necessary (Need to add high score functionality)
+    function showResults() {
+        quizScreen.style.display = "none";
+        results.style.display = "flex";
+    
+        clearInterval(setTimeInterval);
+        clearInterval(scoreTimerInterval);
+    
+        score.textContent = playerScore;
+    };
+    
 };
 
-function showResults() {
-    quizScreen.style.display = "none";
-    console.log(playerScore);
-};
 
-function showHighscores() {};
+
+function showHighscores() {}
