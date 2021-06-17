@@ -2,34 +2,51 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-size: 20px;
+}
+
+body{
+    background-image: url("/assets/images/js-background.jpg");
+    background-size: 475px 325px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .playArea {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 75px;
-    padding: 5%;
+    margin-top: 100px;
+    padding: 10px 0;
+    background-color: rgba(77, 229, 240, 0.9);
+    border-radius: 20px;
+    width: 90%;
 }
 
 #welcomeScreen {
+    display: flex;
     text-align: center;
 }
 
 #introTitle {
-    margin-bottom: 5px;
+    margin: 0 10px;
+    font-size: 2rem;
 }
 
 #rules{
-    margin-bottom: 5px;
+    margin: 10px;
+    font-size: 1.25rem;
 }
 
 #beginButton{
-    margin: 5px;
+    margin: 25px;
     transform: scale(2);
     background-color: blue;
     color: white;
     opacity: 0.6;
+    border-radius: 20px;
+    padding: 2px;
 }
 
 #beginButton:hover {
@@ -38,15 +55,68 @@
 
 #quiz {
     display: none;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#highscores {
+#question {
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 0 10px;
+}
+
+#answers {
+    list-style-type: none;
+}
+
+.answerButtons {
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#timer {
+    position: absolute;
+    bottom: 25px;
+    border-radius: 50%;
+    color:white;
+    background-color: rgba(77, 229, 240, 0.9);
+    padding: 30px;
+}
+
+#timeLeft {
+    font-size: 2rem;
+}
+
+#highscoresEl {
     display: none;
 }
 
 #HSButton {
     position: absolute;
+    width: 90%;
     top: 5px;
     text-align: center;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background-color: rgba(77, 229, 240, 0.9);
+    border-radius: 20px;
+}
+
+#HSButton h3{
+    color: blue;
+}
+
+#HSMessage {
+    display: none;
 }
