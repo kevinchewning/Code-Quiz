@@ -106,14 +106,20 @@ var playerScore;
 var questionNumber;
 var timeleft;
 var points;
+var setTimeInterval;
+var scoreTimerInterval;
 
 //quiz functions
 beginButton.addEventListener("click", function () {buildQuiz()});
 playAgainButton.addEventListener("click", function() {buildQuiz()});
 
-//Render quiz
 
-// !!buildQuiz appears to be running multiple times concurrently when doing repeated play throughs. Must find solution.
+answer1.addEventListener("click", function () {answerChecker("a")});
+answer2.addEventListener("click", function () {answerChecker("b")});
+answer3.addEventListener("click", function () {answerChecker("c")});
+answer4.addEventListener("click", function () {answerChecker("d")});
+
+//Render quiz
 function buildQuiz() {
     questionNumber = -1;
     timeleft = 60;
@@ -126,74 +132,67 @@ function buildQuiz() {
 
     timeLeft.textContent = timeleft;
 
-    var setTimeInterval = setInterval(setTime, 1000);
+    setTimeInterval = setInterval(setTime, 1000);
 
-    var scoreTimerInterval = setInterval(scoreTimer, 10);
+    scoreTimerInterval = setInterval(scoreTimer, 10);
 
     nextQuestion();
+}
 
-    answer1.addEventListener("click", function () {answerChecker("a")});
-    answer2.addEventListener("click", function () {answerChecker("b")});
-    answer3.addEventListener("click", function () {answerChecker("c")});
-    answer4.addEventListener("click", function () {answerChecker("d")});
 
-    //10 second timer to award points based on how quickly you answer.
-    function scoreTimer () {
-        if (points > 0) {
-            points -= 1;
-        };
+//10 second timer to award points based on how quickly you answer.
+function scoreTimer () {
+    if (points > 0) {
+        points -= 1;
     };
-
-    //60 second timer to complete entire quiz.
-    function setTime() {
-        if (timeleft > 0) {
-            timeleft--;
-            timeLeft.textContent = timeleft;
-        } else {
-            showResults();
-        };
-    };
-    
-    //Renders next question/answers if any available or ends quiz
-    function nextQuestion () {
-        questionNumber++;
-
-        if (questionNumber < quizQuestions.length) {
-            questionEl.textContent = quizQuestions[questionNumber].question;
-            answer1.textContent = quizQuestions[questionNumber].answers.a;
-            answer2.textContent = quizQuestions[questionNumber].answers.b;
-            answer3.textContent = quizQuestions[questionNumber].answers.c;
-            answer4.textContent = quizQuestions[questionNumber].answers.d;
-        } else {
-            showResults();
-        };
-    };
-
-    //Checks correct answer against variable given with click. Deducts 5 seconds for incorrect answers
-    function answerChecker (x) {
-        console.log(questionNumber);
-        
-        if (x == quizQuestions[questionNumber].correctAnswer) {
-            playerScore += points;
-            points = 1000
-            nextQuestion();
-        } else {
-            timeleft -= 5;
-        };
-    };
-
-    //Renders results and prompts for highscore input if necessary (Need to add high score functionality)
-    function showResults() {
-        quizScreen.style.display = "none";
-        results.style.display = "flex";
-    
-        clearInterval(setTimeInterval);
-        clearInterval(scoreTimerInterval);
-    
-        score.textContent = playerScore;
-    };
-    
 };
+
+//60 second timer to complete entire quiz.
+function setTime() {
+    if (timeleft > 0) {
+        timeleft--;
+        timeLeft.textContent = timeleft;
+    } else {
+        showResults();
+    };
+};
+
+//Renders next question/answers if any available or ends quiz
+function nextQuestion () {
+    questionNumber++;
+
+    if (questionNumber < quizQuestions.length) {
+        questionEl.textContent = quizQuestions[questionNumber].question;
+        answer1.textContent = quizQuestions[questionNumber].answers.a;
+        answer2.textContent = quizQuestions[questionNumber].answers.b;
+        answer3.textContent = quizQuestions[questionNumber].answers.c;
+        answer4.textContent = quizQuestions[questionNumber].answers.d;
+    } else {
+        showResults();
+    };
+};
+
+//Checks correct answer against variable given with click. Deducts 5 seconds for incorrect answers
+function answerChecker (x) {
+    if (x == quizQuestions[questionNumber].correctAnswer) {
+        playerScore += points;
+        points = 1000
+        nextQuestion();
+    } else {
+        timeleft -= 5;
+    };
+};
+
+//Renders results and prompts for highscore input if necessary (Need to add high score functionality)
+function showResults() {
+    quizScreen.style.display = "none";
+    results.style.display = "flex";
+
+    clearInterval(setTimeInterval);
+    clearInterval(scoreTimerInterval);
+
+    score.textContent = playerScore;        
+};    
 
 
 
