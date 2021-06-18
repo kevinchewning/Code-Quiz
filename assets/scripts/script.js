@@ -20,9 +20,11 @@ var topScore = document.getElementById("topScore");
 var results = document.getElementById("results");
 var score = document.getElementById("playerScore");
 var playAgainButton = document.getElementById("playAgain");
+var highscoreForm = document.getElementById("highScoreForm");
 
 //quiz variables
 const quizQuestions = [
+    //1
     {
         question: "Which syntax is used to write javascript comments?",
         answers: {
@@ -34,6 +36,7 @@ const quizQuestions = [
         correctAnswer: "d"
     },
 
+    //2
     {
         question: "What keyword(s) can be used to declare a javascript variable?",
         answers: {
@@ -45,6 +48,7 @@ const quizQuestions = [
         correctAnswer: "b"
     },
 
+    //3
     {
         question: "What is the correct operator for 'not equal value or type'?",
         answers: {
@@ -56,6 +60,7 @@ const quizQuestions = [
         correctAnswer: "c"
     },
 
+    //4
     {
         question: "What two values are Boolean?",
         answers: {
@@ -67,6 +72,7 @@ const quizQuestions = [
         correctAnswer: "b"
     },
 
+    //5
     {
         question: "What does JSON stand for?",
         answers: {
@@ -78,6 +84,7 @@ const quizQuestions = [
         correctAnswer: "d"
     },
 
+    //6
     {
         question: "Which of the following type of variable takes precedence over other if names are same?",
         answers: {
@@ -89,6 +96,7 @@ const quizQuestions = [
         correctAnswer: "b"
     },
 
+    //7
     {
         question: "Which of the following function of Array object adds one or more elements to the end of an array and returns the new length of the array?",
         answers: {
@@ -99,7 +107,213 @@ const quizQuestions = [
         },
         correctAnswer: "b"
     },
-    
+
+/*
+
+    //8
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //9
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //10
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //11
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //12
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //13
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //14
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //15
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //16
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //17
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //18
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //19
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //20
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //22
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //23
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //24
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+
+    //25
+    {
+        question: "",
+        answers: {
+            a: "",
+            b: "",
+            c: "",
+            d: ""
+        },
+        correctAnswer: ""
+    },
+    */
 ]
 
 var playerScore;
@@ -108,6 +322,10 @@ var timeleft;
 var points;
 var setTimeInterval;
 var scoreTimerInterval;
+
+var highScoreString = localStorage.getItem("highscoresLS");
+var highScores = JSON.parse(highScoreString) ?? [];
+var lowestScore = highScores[9]?.playerScore ?? 0;
 
 //quiz functions
 beginButton.addEventListener("click", function () {buildQuiz()});
@@ -118,6 +336,8 @@ answer1.addEventListener("click", function () {answerChecker("a")});
 answer2.addEventListener("click", function () {answerChecker("b")});
 answer3.addEventListener("click", function () {answerChecker("c")});
 answer4.addEventListener("click", function () {answerChecker("d")});
+
+hsButton.addEventListener("click", function() {showHighscores()});
 
 //Render quiz
 function buildQuiz() {
@@ -191,9 +411,44 @@ function showResults() {
     clearInterval(setTimeInterval);
     clearInterval(scoreTimerInterval);
 
-    score.textContent = playerScore;        
+    score.textContent = playerScore;
+    
+    scoreChecker();
 };    
 
+//Check if score is in top 10
+function scoreChecker() {
+    if (playerScore > lowestScore) {
+        submitHighscore();
+    };
+}
 
+//Prompt for initials and submit highscore
+function submitHighscore() {
+    var initials = prompt("You got a highscore! Enter your intials:");
+    var newScore = {playerScore, initials};
 
-function showHighscores() {}
+    highScores.push(newScore);
+    highScores.sort((a, b) => b.playerScore - a.playerScore);
+    highScores.splice(10);
+    localStorage.setItem("highscoresLS", JSON.stringify(highScores));
+} 
+
+//show highscore screen
+//must style and add back button
+function showHighscores() {
+    welcomeScreen.style.display = "none";
+    results.style.display = "none";
+    quizScreen.style.display = "none";
+    highscoresEl.style.display = "flex";
+
+    highScores.sort((a, b) => b.playerScore - a.playerScore);
+
+    for (i = 0; i < highScores.length; i++) {
+        var createHS = document.createElement("li");
+        createHS.textContent = highScores[i].playerScore + "    " + highScores[i].initials;
+        highscores.appendChild(createHS);
+    }
+}
+
+//TODO: Style highscore screen w/ back button, style for multiple screen sizes
