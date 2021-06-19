@@ -21,6 +21,8 @@ var results = document.getElementById("results");
 var score = document.getElementById("playerScore");
 var playAgainButton = document.getElementById("playAgain");
 var highscoreForm = document.getElementById("highScoreForm");
+var closeBtn = document.getElementById("closeBtn");
+var HSList = document.getElementsByClassName("HSList");
 
 //quiz variables
 const quizQuestions = [
@@ -338,6 +340,7 @@ answer3.addEventListener("click", function () {answerChecker("c")});
 answer4.addEventListener("click", function () {answerChecker("d")});
 
 hsButton.addEventListener("click", function() {showHighscores()});
+closeBtn.addEventListener("click", function () {hideHighscores()});
 
 //Render quiz
 function buildQuiz() {
@@ -437,18 +440,25 @@ function submitHighscore() {
 //show highscore screen
 //must style and add back button
 function showHighscores() {
-    welcomeScreen.style.display = "none";
-    results.style.display = "none";
-    quizScreen.style.display = "none";
     highscoresEl.style.display = "flex";
+
+    while (highscores.firstChild) {
+        highscores.removeChild(highscores.firstChild);
+      }
 
     highScores.sort((a, b) => b.playerScore - a.playerScore);
 
     for (i = 0; i < highScores.length; i++) {
         var createHS = document.createElement("li");
+        createHS.className = "HSList";
         createHS.textContent = highScores[i].playerScore + "    " + highScores[i].initials;
         highscores.appendChild(createHS);
     }
+}
+
+function hideHighscores() {    
+    //highscores.removeChild(highscores.childNodes);
+    highscoresEl.style.display = "none";
 }
 
 //TODO: Style highscore screen w/ back button, style for multiple screen sizes

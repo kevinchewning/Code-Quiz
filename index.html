@@ -5,6 +5,8 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Code Quiz!</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/style.css"/>
     </head>
 
@@ -18,7 +20,7 @@
                 quick! Try and answer all of the questions before the timer runs out! Wrong answers
                 will result in lost time so be careful! Are you ready?!
             </p>
-            <button type="button" id="beginButton">Begin!</button>
+            <button type="button" class="button" id="beginButton">Begin!</button>
         </div>
 
         <!--Quiz Area-->
@@ -30,25 +32,20 @@
                 <li class="answerButtons" id="answer3">asfasfafasf</li>
                 <li class="answerButtons" id="answer4">asfacwcwec</li>
             </ol>
-            <div id="timer"><span id="timeLeft">60</span></div>
+            <div id="timer"><p>Time left: <span id="timeLeft">60</span></p></div>
         </div>
 
         <!--Results Area-->
         <div class="playArea" id="results">
             <h1 id="youScored">You scored <span id="playerScore"></span> points!</h1>
-            <!--<form id="highScoreForm">
-                <h2>Congrats! You made the highscores!</h2>
-                <label for="highScoreInput">Enter your initials:</label>
-                <input type="text" id="highScoreInput" name="highScoreInput">
-                <input type="submit" value="Submit">
-            </form>-->
-            <button type="button" id="playAgain">Play again?</button>
+            <button type="button" class="button" id="playAgain">Play again?</button>
         </div>
 
         <!--Highscores Area-->
         <div class="playArea" id="highscoresEl">
             <h1>Highscores</h1>
             <ol id="highscores"></ol>
+            <button type="button" class="button" id="closeBtn">Close</button>
         </div>
 
         <!--View Highscores Button-->

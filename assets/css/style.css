@@ -6,8 +6,7 @@
 }
 
 body{
-    background-image: url("/assets/images/js-background.jpg");
-    background-size: 475px 325px;
+    background-color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -19,7 +18,7 @@ body{
     justify-content: center;
     margin-top: 100px;
     padding: 10px 0;
-    background-color: rgba(77, 229, 240, 0.9);
+    background-color: rgb(77, 229, 240);
     border-radius: 20px;
     width: 90%;
 }
@@ -39,7 +38,7 @@ body{
     font-size: 1.25rem;
 }
 
-#beginButton{
+.button{
     margin: 25px;
     transform: scale(2);
     background-color: blue;
@@ -49,7 +48,7 @@ body{
     padding: 2px;
 }
 
-#beginButton:hover {
+.button:hover {
     opacity: 1;
 }
 
@@ -62,7 +61,7 @@ body{
 }
 
 #question {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     text-align: center;
     padding: 0 10px;
 }
@@ -77,21 +76,20 @@ body{
     border-radius: 10px;
     margin: 20px 0;
     padding: 5px 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 #timer {
     position: absolute;
     bottom: 25px;
-    border-radius: 50%;
-    color:white;
-    background-color: rgba(77, 229, 240, 0.9);
-    padding: 30px;
+    border-radius: 10px;
+    background-color: rgb(77, 229, 240);
+    padding: 5px;
 }
 
 #timeLeft {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 #results {
@@ -104,12 +102,45 @@ body{
 
 #highscoresEl {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    padding: 25px 0;
+    font-family: 'VT323', monospace;
+    border: 5px solid blue;
+    animation: borderColorChange 5s infinite;
+}
+
+@keyframes borderColorChange {
+    0% {border-color: blue;}
+    33% {border-color: red;}
+    66% {border-color: green;}
+    100% {border-color: blue;}
+}
+
+#highscoresEl h1 {
+    margin: 10px 0;
+    font-size: 2rem;
+    animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+    0% {color: blue;}
+    33% {color: red;}
+    66% {color: green;}
+    100% {color: blue;}
+}
+
+#highscores li {
+    margin: 5px 0;
+    font-size: 1.5rem;
 }
 
 #HSButton {
     position: absolute;
     width: 90%;
-    top: 5px;
+    top: 20px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -117,7 +148,7 @@ body{
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    background-color: rgba(77, 229, 240, 0.9);
+    background-color: rgb(77, 229, 240);
     border-radius: 20px;
 }
 
@@ -127,4 +158,28 @@ body{
 
 #HSMessage {
     display: none;
+}
+
+@media screen and (min-width:415px) {
+
+* {
+    font-size: 30px;
+}
+
+}
+
+@media screen and (min-width:700px) {
+
+* {
+    font-size: 35px;
+}
+
+}
+
+@media screen and (min-width:1000px) {
+
+.playArea {
+    margin-top: 125px;
+}
+
 }
