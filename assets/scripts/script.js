@@ -110,212 +110,102 @@ const quizQuestions = [
         correctAnswer: "b"
     },
 
-/*
-
     //8
     {
-        question: "",
+        question: "Inside which HTML element do we put the JavaScript?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "<script>",
+            b: "<scripting>",
+            c: "js",
+            d: "javascript"
         },
-        correctAnswer: ""
+        correctAnswer: "a"
     },
 
     //9
     {
-        question: "",
+        question: "How do you create a function in javascript?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "function:myFunction()",
+            b: "function myFunction()",
+            c: "function = myFunction()",
+            d: "var myFunction()"
         },
-        correctAnswer: ""
+        correctAnswer: "b"
     },
 
     //10
     {
-        question: "",
+        question: "How do you write an IF statement in javascript?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "if i = 5",
+            b: "if i = 5 then",
+            c: "if i == 5 then",
+            d: "if (i == 5)"
         },
-        correctAnswer: ""
+        correctAnswer: "d"
     },
 
     //11
     {
-        question: "",
+        question: "How to write an IF statement for executing some code if i is NOT equal to 5?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "if (i <> 5)",
+            b: "if i =! 5 then",
+            c: "if i <> 5",
+            d: "if (i != 5)"
         },
-        correctAnswer: ""
+        correctAnswer: "d"
     },
 
     //12
     {
-        question: "",
+        question: "How does a WHILE loop start?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "while (i <= 10)",
+            b: "while i = 1 to 10",
+            c: "while (i <= 10: i++)",
+            d: "while i < 10 then"
         },
-        correctAnswer: ""
+        correctAnswer: "a"
     },
 
     //13
     {
-        question: "",
+        question: "How does a FOR loop start?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "for (i <= 5; i++)",
+            b: "for (i = 0; i <= 5; i++)",
+            c: "for i = 1 to 5",
+            d: "for (i = 0; i <= 5)"
         },
-        correctAnswer: ""
+        correctAnswer: "b"
     },
 
     //14
     {
-        question: "",
+        question: "How do you round the number 7.25, to the nearest integer?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "Math.round(7.25)",
+            b: "rnd(7.25)",
+            c: "round(7.25)",
+            d: "Math.rnd(7.25)"
         },
-        correctAnswer: ""
+        correctAnswer: "a"
     },
 
     //15
     {
-        question: "",
+        question: "How do you find the number with the highest value of x and y?",
         answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
+            a: "Math.ceil(x, y)",
+            b: "ceil(x, y)",
+            c: "top(x, y)",
+            d: "Math.max(x, y)"
         },
-        correctAnswer: ""
+        correctAnswer: "d"
     },
 
-    //16
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //17
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //18
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //19
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //20
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //22
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //23
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //24
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-
-    //25
-    {
-        question: "",
-        answers: {
-            a: "",
-            b: "",
-            c: "",
-            d: ""
-        },
-        correctAnswer: ""
-    },
-    */
 ]
 
 var playerScore;
@@ -437,8 +327,6 @@ function submitHighscore() {
     localStorage.setItem("highscoresLS", JSON.stringify(highScores));
 } 
 
-//show highscore screen
-//must style and add back button
 function showHighscores() {
     highscoresEl.style.display = "flex";
 
@@ -457,8 +345,5 @@ function showHighscores() {
 }
 
 function hideHighscores() {    
-    //highscores.removeChild(highscores.childNodes);
     highscoresEl.style.display = "none";
 }
-
-//TODO: Style highscore screen w/ back button, style for multiple screen sizes
