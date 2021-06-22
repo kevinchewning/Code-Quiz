@@ -219,7 +219,7 @@ var highScoreString = localStorage.getItem("highscoresLS");
 var highScores = JSON.parse(highScoreString) ?? [];
 var lowestScore = highScores[9]?.playerScore ?? 0;
 
-//quiz functions
+//Event listeners
 beginButton.addEventListener("click", function () {buildQuiz()});
 playAgainButton.addEventListener("click", function() {buildQuiz()});
 
@@ -327,6 +327,8 @@ function submitHighscore() {
     localStorage.setItem("highscoresLS", JSON.stringify(highScores));
 } 
 
+
+//Show highscores element. Removes list items from last time opened and appends current highscore list to element.
 function showHighscores() {
     highscoresEl.style.display = "flex";
 
@@ -344,6 +346,7 @@ function showHighscores() {
     }
 }
 
+//Hides highscores element
 function hideHighscores() {    
     highscoresEl.style.display = "none";
 }

@@ -156,10 +156,6 @@ body{
     color: blue;
 }
 
-#HSMessage {
-    display: none;
-}
-
 @media screen and (min-width:415px) {
 
 * {
