@@ -12,11 +12,7 @@ Download repository from https://github.com/kevinchewning/Code-Quiz
 
 Site can be viewed at https://kevinchewning.github.io/Code-Quiz/
 
-<<<<<<< HEAD
 ![Site Screenshot](cq-screenshot.jpg)
-=======
-![Site Screenshot](assets/images/cq-screenshot.JPG)
->>>>>>> c1bf53501640a48e852e05cc2d33d73fbc360a6f
 
 ## Credits
 
